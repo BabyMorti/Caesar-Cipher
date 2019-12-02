@@ -4,35 +4,25 @@ with open('key.txt', 'r') as f:
 	key = f.read()
 	key = int(key)
 def crypt(string, key):
-	l1 = []
-	s = ''
-	for i in string:
-		l1.append(i)
-	for i in range(len(l1)):
-		l1[i] = chr(ord(l1[i]) + key)
-	for i in l1:
-		s+=i
-	return s	
+	s2 = ''
+	for i in range(len(string)):
+		s2 += chr(ord(string[i]) + key)
+	return s2
 def decrypt(string, key):
-	l1 = []
-	s = ''
-	for i in string:
-		l1.append(i)
-	for i in range(len(l1)):
-		l1[i] = chr(ord(l1[i]) - key)
-	for i in l1:
-		s+=i
-	return s
-try:	
+	s2 = ''
+	for i in range(len(string)):
+		s2 += chr(ord(string[i]) - key)
+	return s2
+try:
 	ch = int(input('1 - Crypt, 2 - Decrypt\n'))
 except ValueError:
 	print('Write the number of action!')
-else:	
-	if ch == 1: 
+else:
+	if ch == 1:
 		with open('output.txt', 'w') as f:
 			f.write(crypt(string, key))
-	elif ch == 2: 
+	elif ch == 2:
 		with open('output.txt', 'w') as f:
-			f.write(decrypt(string, key))	
+			f.write(decrypt(string, key))
 	else:
-		raise Exception('Unsupported action')			
+		print('Unsupported action!')
